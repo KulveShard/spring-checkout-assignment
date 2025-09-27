@@ -1,0 +1,34 @@
+{
+  "apple": {
+    "itemKey": "${NOT_NULL}",
+    "priceInCents": "${NUMBER}",
+    "priceFormatted": "${NOT_NULL}",
+    "offerQuantity": "${ANY}",
+    "offerSavingsInCents": "${ANY}",
+    "offerDescription": "${ANY}"
+  },
+  "banana": {
+    "itemKey": "${NOT_NULL}",
+    "priceInCents": "${NUMBER}",
+    "priceFormatted": "${NOT_NULL}",
+    "offerQuantity": "${ANY}",
+    "offerSavingsInCents": "${ANY}",
+    "offerDescription": "${ANY}"
+  },
+  "peach": {
+    "itemKey": "${NOT_NULL}",
+    "priceInCents": "${NUMBER}",
+    "priceFormatted": "${NOT_NULL}",
+    "offerQuantity": "${ANY}",
+    "offerSavingsInCents": "${ANY}",
+    "offerDescription": "${ANY}"
+  },
+  "kiwi": {
+    "itemKey": "${NOT_NULL}",
+    "priceInCents": "${NUMBER}",
+    "priceFormatted": "${NOT_NULL}",
+    "offerQuantity": "${ANY}",
+    "offerSavingsInCents": "${ANY}",
+    "offerDescription": "${ANY}"
+  }
+}

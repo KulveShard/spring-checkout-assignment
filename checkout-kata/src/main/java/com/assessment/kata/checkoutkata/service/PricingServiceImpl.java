@@ -15,6 +15,7 @@ import com.assessment.kata.checkoutkata.repository.PricingRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -108,6 +109,7 @@ public class PricingServiceImpl implements PricingService {
   }
 
   @Override
+  @Transactional
   public UpdatePricingResponseDTO removeItemOfferByName(String itemName) {
     Item item = toItem(itemName);
 

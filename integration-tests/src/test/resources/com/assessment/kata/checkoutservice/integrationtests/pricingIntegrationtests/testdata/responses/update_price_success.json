@@ -1,0 +1,8 @@
+{
+  "message": "${NOT_NULL}",
+  "itemName": "Apple",
+  "oldPriceInCents": "${NUMBER}",
+  "newPriceInCents": 35,
+  "oldOfferDescription": "${ANY}",
+  "newOfferDescription": "${ANY}"
+}
