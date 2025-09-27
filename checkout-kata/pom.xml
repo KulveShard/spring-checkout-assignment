@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.assessment.kata</groupId>
     <artifactId>checkout-kata</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>checkout-kata</name>
     <description>checkout-kata</description>
     <url/>
