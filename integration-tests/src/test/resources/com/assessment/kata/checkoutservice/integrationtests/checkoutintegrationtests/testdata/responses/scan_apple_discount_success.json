@@ -1,0 +1,6 @@
+{
+  "itemScanned": "Apple",
+  "currentQuantity": 2,
+  "runningTotal": "${NOT_NULL}",
+  "message": "${NOT_NULL}"
+}

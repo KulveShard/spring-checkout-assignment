@@ -1,4 +1,4 @@
-package com.assessment.kata.checkoutkata.integrationtests.pricingIntegrationtests;
+package com.assessment.kata.checkoutkata.integrationtests.pricingintegrationtests;
 
 import com.assessment.kata.checkoutkata.integrationtests.common.BaseIntegrationTest;
 import com.assessment.kata.checkoutkata.integrationtests.common.TestConstants;
