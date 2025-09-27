@@ -1,6 +1,6 @@
 package com.assessment.kata.checkoutkata.exception;
 
-import com.assessment.kata.checkoutkata.dto.ErrorResponseDTO;
+import com.assessment.kata.checkoutkata.dto.error.ErrorResponseDTO;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

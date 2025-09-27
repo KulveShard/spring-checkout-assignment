@@ -1,4 +1,4 @@
-package com.assessment.kata.checkoutkata.dto;
+package com.assessment.kata.checkoutkata.dto.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
