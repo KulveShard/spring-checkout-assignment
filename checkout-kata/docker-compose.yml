@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  checkout-kata-db:
+    image: postgres:latest
+    container_name: checkout-kata-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5000:5432"
+    volumes:
+      - checkout_db_data:/var/lib/postgresql/data
+    networks:
+      - checkout_internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  checkout-kata:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: checkout-kata:latest
+    container_name: checkout-kata
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+      SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+    ports:
+      - "8080:8080"
+    depends_on:
+      checkout-kata-db:
+        condition: service_healthy
+    networks:
+      - checkout_internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/checkout/total"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  checkout_db_data:
+
+networks:
+  checkout_internal:
+    driver: bridge
