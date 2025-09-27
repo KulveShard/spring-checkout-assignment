@@ -152,6 +152,21 @@ public class PricingServiceImpl implements PricingService {
     return toPricingResponseMap(getAllPricing());
   }
 
+  @Override
+  @Cacheable(value = "pricing", key = "#item.key + '_discount'")
+  public Optional<DiscountRule> getDiscountRule(Item item) {
+    Optional<PricingConfig> config = pricingRepository.findByItemKey(item.getKey());
+    if (config.isEmpty() || !config.get().hasOffer()) {
+      return Optional.empty();
+    }
+
+    PricingConfig pricingConfig = config.get();
+    return Optional.of(new DiscountRule(
+        pricingConfig.getOfferQuantity(),
+        pricingConfig.getOfferSavingsInCents()
+    ));
+  }
+
   @Cacheable(value = "pricing", key = "'all'")
   public Map<String, PricingConfig> getAllPricing() {
     Map<String, PricingConfig> result = new HashMap<>();
@@ -159,6 +174,7 @@ public class PricingServiceImpl implements PricingService {
     return result;
   }
 
+  @Override
   @Cacheable(value = "pricing", key = "#item.key + '_price'")
   public int getItemPriceInCents(Item item) {
     Optional<PricingConfig> config = pricingRepository.findByItemKey(item.getKey());
@@ -166,6 +182,11 @@ public class PricingServiceImpl implements PricingService {
       throw new ItemNotFoundException(String.format("No pricing configuration for item %s", item));
     }
     return config.get().getPriceInCents();
+  }
+
+  @Override
+  public boolean hasItemConfiguration(Item item) {
+    return pricingRepository.existsByItemKey(item.getKey());
   }
 
   private String createOfferUpdateDescription(UpdateOfferRequestDTO request, Optional<DiscountRule> oldRule, Item item, int itemPrice) {
