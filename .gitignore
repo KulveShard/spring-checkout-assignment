@@ -18,3 +18,4 @@ buildNumber.properties
 /.idea/
 /checkout-kata/.gitattributes
 /checkout-kata/.gitignore
+/.run/
