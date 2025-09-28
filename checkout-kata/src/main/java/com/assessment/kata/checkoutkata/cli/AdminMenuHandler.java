@@ -3,14 +3,11 @@ package com.assessment.kata.checkoutkata.cli;
 import com.assessment.kata.checkoutkata.dto.pricing.FullPricingResponseDTO;
 import com.assessment.kata.checkoutkata.dto.pricing.UpdatePricingResponseDTO;
 import com.assessment.kata.checkoutkata.model.Item;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 import static com.assessment.kata.checkoutkata.cli.CheckoutConstants.*;
-import static com.assessment.kata.checkoutkata.util.CheckoutStringUtils.formatPrice;
 
-@Component
 public class AdminMenuHandler {
 
     private final CheckoutApiClient apiClient;

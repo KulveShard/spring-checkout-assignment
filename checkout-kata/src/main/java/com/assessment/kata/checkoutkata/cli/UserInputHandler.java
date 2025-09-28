@@ -1,13 +1,11 @@
 package com.assessment.kata.checkoutkata.cli;
 
 import com.assessment.kata.checkoutkata.model.Item;
-import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 import static com.assessment.kata.checkoutkata.cli.CheckoutConstants.*;
 
-@Component
 public class UserInputHandler {
 
     private final Scanner scanner = new Scanner(System.in);

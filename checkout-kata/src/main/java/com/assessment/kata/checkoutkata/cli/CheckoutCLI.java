@@ -21,12 +21,11 @@ public class CheckoutCLI implements CommandLineRunner {
     private final UserInputHandler inputHandler;
     private final AdminMenuHandler adminHandler;
 
-    public CheckoutCLI(CheckoutApiClient apiClient, MenuDisplayService displayService,
-                      UserInputHandler inputHandler, AdminMenuHandler adminHandler) {
+    public CheckoutCLI(CheckoutApiClient apiClient, MenuDisplayService displayService) {
         this.apiClient = apiClient;
         this.displayService = displayService;
-        this.inputHandler = inputHandler;
-        this.adminHandler = adminHandler;
+        this.inputHandler = new UserInputHandler();
+        this.adminHandler = new AdminMenuHandler(apiClient, displayService, inputHandler);
     }
     @Override
     public void run(String... args) {
