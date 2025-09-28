@@ -12,7 +12,6 @@ import com.assessment.kata.checkoutkata.model.DiscountRule;
 import com.assessment.kata.checkoutkata.model.Item;
 import com.assessment.kata.checkoutkata.model.PricingConfig;
 import com.assessment.kata.checkoutkata.repository.PricingRepository;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +41,7 @@ public class PricingServiceImpl implements PricingService {
   }
 
   @Override
+  @Transactional
   public UpdatePricingResponseDTO updateItemPriceByName(String itemName, UpdatePriceRequestDTO request) {
     Item item = toItem(itemName);
     int newPrice = toPriceInCents(request);
@@ -70,6 +70,7 @@ public class PricingServiceImpl implements PricingService {
   }
 
   @Override
+  @Transactional
   public UpdatePricingResponseDTO updateItemOfferByName(String itemName, UpdateOfferRequestDTO request) {
     Item item = toItem(itemName);
 
@@ -148,12 +149,13 @@ public class PricingServiceImpl implements PricingService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Map<String, FullPricingResponseDTO> getAllPricingResponses() {
     return toPricingResponseMap(getAllPricing());
   }
 
   @Override
-  @Cacheable(value = "pricing", key = "#item.key + '_discount'")
+  @Transactional(readOnly = true)
   public Optional<DiscountRule> getDiscountRule(Item item) {
     Optional<PricingConfig> config = pricingRepository.findByItemKey(item.getKey());
     if (config.isEmpty() || !config.get().hasOffer()) {
@@ -167,7 +169,7 @@ public class PricingServiceImpl implements PricingService {
     ));
   }
 
-  @Cacheable(value = "pricing", key = "'all'")
+  @Transactional(readOnly = true)
   public Map<String, PricingConfig> getAllPricing() {
     Map<String, PricingConfig> result = new HashMap<>();
     pricingRepository.findAll().forEach(entity -> result.put(entity.getItemKey(), entity));
@@ -175,7 +177,7 @@ public class PricingServiceImpl implements PricingService {
   }
 
   @Override
-  @Cacheable(value = "pricing", key = "#item.key + '_price'")
+  @Transactional(readOnly = true)
   public int getItemPriceInCents(Item item) {
     Optional<PricingConfig> config = pricingRepository.findByItemKey(item.getKey());
     if (config.isEmpty()) {
@@ -185,6 +187,7 @@ public class PricingServiceImpl implements PricingService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public boolean hasItemConfiguration(Item item) {
     return pricingRepository.existsByItemKey(item.getKey());
   }
