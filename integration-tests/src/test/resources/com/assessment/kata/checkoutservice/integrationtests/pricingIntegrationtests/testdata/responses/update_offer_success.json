@@ -1,0 +1,8 @@
+{
+  "message": "Offer updated successfully for Apple",
+  "itemName": "Apple",
+  "oldPriceInCents": 30,
+  "newPriceInCents": 30,
+  "oldOfferDescription": "2 for $0.45",
+  "newOfferDescription": "3 for $0.65"
+}

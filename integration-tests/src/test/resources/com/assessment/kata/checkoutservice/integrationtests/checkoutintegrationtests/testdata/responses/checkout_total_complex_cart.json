@@ -1,0 +1,23 @@
+{
+  "items": {
+    "Apple": 2,
+    "Banana": 3
+  },
+  "subtotal": "$2.10",
+  "discountsApplied": [
+    {
+      "itemName": "Apple",
+      "discountSets": 1,
+      "savingsPerSet": 15,
+      "totalSavings": 15
+    },
+    {
+      "itemName": "Banana",
+      "discountSets": 1,
+      "savingsPerSet": 20,
+      "totalSavings": 20
+    }
+  ],
+  "totalDiscount": "$0.35",
+  "finalTotal": "$1.75"
+}

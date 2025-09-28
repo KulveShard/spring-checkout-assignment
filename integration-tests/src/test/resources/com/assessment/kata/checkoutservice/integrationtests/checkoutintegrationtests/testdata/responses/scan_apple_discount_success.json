@@ -1,6 +1,6 @@
 {
   "itemScanned": "Apple",
   "currentQuantity": 2,
-  "runningTotal": "${NOT_NULL}",
-  "message": "${NOT_NULL}"
+  "runningTotal": "$0.45",
+  "message": "Added 2 Apple - 15 discount applied! Running total: $0.45"
 }

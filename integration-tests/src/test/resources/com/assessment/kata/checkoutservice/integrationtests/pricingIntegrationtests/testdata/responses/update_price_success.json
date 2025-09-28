@@ -1,8 +1,8 @@
 {
-  "message": "${NOT_NULL}",
+  "message": "Price updated: Apple $0.30 → $0.35",
   "itemName": "Apple",
-  "oldPriceInCents": "${NUMBER}",
+  "oldPriceInCents": 30,
   "newPriceInCents": 35,
-  "oldOfferDescription": "${ANY}",
-  "newOfferDescription": "${ANY}"
+  "oldOfferDescription": null,
+  "newOfferDescription": null
 }

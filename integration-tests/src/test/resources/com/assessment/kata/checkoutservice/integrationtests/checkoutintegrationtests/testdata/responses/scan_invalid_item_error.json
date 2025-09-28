@@ -1,0 +1,7 @@
+{
+  "timestamp": "${TIMESTAMP}",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Item invaliditem not found",
+  "path": "/api/checkout/scan"
+}

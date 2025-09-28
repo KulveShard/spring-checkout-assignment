@@ -1,0 +1,10 @@
+{
+  "items": [
+    {
+      "itemName": "Apple",
+      "quantity": 1,
+      "unitPrice": "$0.30",
+      "totalPrice": "$0.30"
+    }
+  ]
+}

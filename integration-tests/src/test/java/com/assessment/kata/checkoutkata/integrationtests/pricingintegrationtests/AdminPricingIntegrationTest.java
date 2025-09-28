@@ -3,7 +3,7 @@ package com.assessment.kata.checkoutkata.integrationtests.pricingintegrationtest
 import com.assessment.kata.checkoutkata.integrationtests.common.BaseIntegrationTest;
 import com.assessment.kata.checkoutkata.integrationtests.common.TestConstants;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -17,6 +17,15 @@ public class AdminPricingIntegrationTest extends BaseIntegrationTest {
 
     private static final String UPDATE_PRICE_SUCCESS_RESPONSE = "pricingintegrationtests/testdata/responses/update_price_success.json";
     private static final String ALL_PRICING_RESPONSE = "pricingintegrationtests/testdata/responses/all_pricing.json";
+
+    @BeforeEach
+    void setUp() {
+        // Reset all items to original data.sql values before each test to ensure test independence
+        resetItem("apple", 30, 2, 15);      // Apple: 30¢ each, 2 for 45¢ (save 15¢)
+        resetItem("banana", 50, 3, 20);     // Banana: 50¢ each, 3 for 130¢ (save 20¢)
+        resetItem("peach", 60, null, null); // Peach: 60¢ each, no offer
+        resetItem("kiwi", 20, null, null);  // Kiwi: 20¢ each, no offer
+    }
 
     @Test
     public void shouldGetAllPricing() {
@@ -141,15 +150,6 @@ public class AdminPricingIntegrationTest extends BaseIntegrationTest {
             .get(TestConstants.ADMIN_PRICING_ENDPOINT)
             .then()
             .statusCode(200);
-    }
-
-    @AfterAll
-    static void resetTestData() {
-        // Reset all items to original data.sql values to ensure test independence
-        resetItem("apple", 30, 2, 15);      // Apple: 30¢ each, 2 for 45¢ (save 15¢)
-        resetItem("banana", 50, 3, 20);     // Banana: 50¢ each, 3 for 130¢ (save 20¢)
-        resetItem("peach", 60, null, null); // Peach: 60¢ each, no offer
-        resetItem("kiwi", 20, null, null);  // Kiwi: 20¢ each, no offer
     }
 
     /**

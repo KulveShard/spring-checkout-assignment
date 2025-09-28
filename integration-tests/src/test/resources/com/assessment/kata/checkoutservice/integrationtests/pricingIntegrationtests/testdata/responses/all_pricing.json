@@ -1,34 +1,34 @@
 {
   "apple": {
-    "itemKey": "${NOT_NULL}",
-    "priceInCents": "${NUMBER}",
-    "priceFormatted": "${NOT_NULL}",
-    "offerQuantity": "${ANY}",
-    "offerSavingsInCents": "${ANY}",
-    "offerDescription": "${ANY}"
+    "itemKey": "apple",
+    "priceInCents": 30,
+    "priceFormatted": "$0.30",
+    "offerQuantity": 2,
+    "offerSavingsInCents": 15,
+    "offerDescription": "2 for $0.45 (save $0.15)"
   },
   "banana": {
-    "itemKey": "${NOT_NULL}",
-    "priceInCents": "${NUMBER}",
-    "priceFormatted": "${NOT_NULL}",
-    "offerQuantity": "${ANY}",
-    "offerSavingsInCents": "${ANY}",
-    "offerDescription": "${ANY}"
+    "itemKey": "banana",
+    "priceInCents": 50,
+    "priceFormatted": "$0.50",
+    "offerQuantity": 3,
+    "offerSavingsInCents": 20,
+    "offerDescription": "3 for $1.30 (save $0.20)"
   },
   "peach": {
-    "itemKey": "${NOT_NULL}",
-    "priceInCents": "${NUMBER}",
-    "priceFormatted": "${NOT_NULL}",
-    "offerQuantity": "${ANY}",
-    "offerSavingsInCents": "${ANY}",
-    "offerDescription": "${ANY}"
+    "itemKey": "peach",
+    "priceInCents": 60,
+    "priceFormatted": "$0.60",
+    "offerQuantity": null,
+    "offerSavingsInCents": null,
+    "offerDescription": null
   },
   "kiwi": {
-    "itemKey": "${NOT_NULL}",
-    "priceInCents": "${NUMBER}",
-    "priceFormatted": "${NOT_NULL}",
-    "offerQuantity": "${ANY}",
-    "offerSavingsInCents": "${ANY}",
-    "offerDescription": "${ANY}"
+    "itemKey": "kiwi",
+    "priceInCents": 20,
+    "priceFormatted": "$0.20",
+    "offerQuantity": null,
+    "offerSavingsInCents": null,
+    "offerDescription": null
   }
 }
