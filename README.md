@@ -16,12 +16,6 @@ cd checkout-kata
 docker-compose -f docker-compose-web.yml up -d --build
 ```
 
-**Interactive CLI Mode:**
-```bash
-cd checkout-kata
-docker-compose -f docker-compose-cli.yml up -d --build
-```
-
 ## 📡 API Endpoints
 
 ### Checkout API (`/api/checkout`)
