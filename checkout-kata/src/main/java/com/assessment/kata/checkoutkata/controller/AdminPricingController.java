@@ -6,7 +6,7 @@ import com.assessment.kata.checkoutkata.dto.pricing.UpdatePriceRequestDTO;
 import com.assessment.kata.checkoutkata.dto.pricing.UpdatePricingResponseDTO;
 import com.assessment.kata.checkoutkata.service.PricingService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -19,7 +19,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/admin/pricing")
-@Validated
 public class AdminPricingController {
 
   private final PricingService pricingService;
@@ -37,7 +36,7 @@ public class AdminPricingController {
   @PatchMapping("/{itemName}/price")
   public ResponseEntity<UpdatePricingResponseDTO> updateItemPrice(
       @PathVariable String itemName,
-      @RequestBody @Validated UpdatePriceRequestDTO request) {
+      @RequestBody @Valid UpdatePriceRequestDTO request) {
 
     UpdatePricingResponseDTO response = pricingService.updateItemPriceByName(itemName, request);
     return ResponseEntity.ok(response);
@@ -46,7 +45,7 @@ public class AdminPricingController {
   @PatchMapping("/{itemName}/offer")
   public ResponseEntity<UpdatePricingResponseDTO> updateItemOffer(
       @PathVariable String itemName,
-      @RequestBody @Validated UpdateOfferRequestDTO request) {
+      @RequestBody @Valid UpdateOfferRequestDTO request) {
 
     UpdatePricingResponseDTO response = pricingService.updateItemOfferByName(itemName, request);
     return ResponseEntity.ok(response);
